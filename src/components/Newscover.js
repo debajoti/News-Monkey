@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 
 export default class Newscover extends Component {
     articles = [];
+    
     static defaultProps = {
       country : 'in',
       pageSize : 8,
@@ -32,7 +33,7 @@ export default class Newscover extends Component {
 
   
     async componentDidMount(){
-        let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=855eae95f1b64ad5855f4242dc1c9f1d&page=1&pageSize=${this.props.pageSize}`;
+        let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=1&pageSize=${this.props.pageSize}`;
         this.setState({loading : true})
         let data = await fetch(url);
         let parseData = await data.json();
@@ -41,7 +42,7 @@ export default class Newscover extends Component {
     }
 
     handlePrevClick = async ()=>{
-      let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=855eae95f1b64ad5855f4242dc1c9f1d&page=${this.state.page - 1}&pageSize=${this.props.pageSize}`;
+      let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page - 1}&pageSize=${this.props.pageSize}`;
       this.setState({loading : true})
         let data = await fetch(url);
         let parseData = await data.json();
@@ -50,7 +51,7 @@ export default class Newscover extends Component {
     }
 
     handleNextClick = async ()=>{
-      let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=855eae95f1b64ad5855f4242dc1c9f1d&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`;
+      let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`;
       this.setState({loading : true})
         let data = await fetch(url);
         let parseData = await data.json();
